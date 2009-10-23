@@ -2,10 +2,11 @@
 use DBI;
 use DBD::mysql;
 use CGI;
+use Time::localtime;
 
 $form=new CGI;
-$f_id=CGI::escapeHTML($form->param("f_id"));
-$f_date=CGI::escapeHTML($form->param("f_date"));
+$f_name=CGI::escapeHTML($form->param("f_name"));
+$f_email=CGI::escapeHTML($form->param("f_email"));
 $f_post=CGI::escapeHTML($form->param("f_post"));
 
 print "Content-type: text/html \n\n";
@@ -22,7 +23,7 @@ $connect = DBI->connect($dsn, $user, $pw) or die "Couldn't connect to database!"
 $query = "SELECT * FROM $tablename ORDER BY id desc";
 $query_handle = $connect->prepare($query);
 $query_handle->execute();
-$query_handle->bind_columns(undef, \$id, \$date, \$post);
+$query_handle->bind_columns(undef, \$id, \$date, \$name, \$email, \$post);
 
 print <<"A";
 
@@ -30,44 +31,66 @@ print <<"A";
 <head>
   <meta content="text/html; charset=ISO-8859-1"
  http-equiv="content-type">
-  <title>Perl and MySQL Test 10-21</title>
+  <title>Perl and MySQL Comments</title>
 </head>
 <body>
-Posts:<br>
+Comments:<br>
 
 A
 
-if($f_id && $f_id != $id) {
-$queryw = "INSERT INTO $tablename VALUES ('$f_id', '$f_date', '$f_post')";
+if($f_name && $f_email) {
+$queryn = "SELECT MAX(id) FROM $tablename";
+$query_handlen = $connect->prepare($queryn);
+$query_handlen->execute();
+$query_handlen->bind_columns(\$n_id);
+while($query_handlen->fetch()) {
+$f_id = $n_id + 1;
+}
+$query_handlen->finish();
+$years = localtime->year();
+$year = 1900 + $years;
+$day = localtime->mday();
+$months = localtime->mon();
+$month = 1 + $months;
+@f_date = ($year, $month, $day);
+$n_date = join("-", @f_date);
+$queryw = "INSERT INTO $tablename VALUES ('$f_id', '$n_date', '$f_name', '$f_email', '$f_post')";
 $query_handlew = $connect->prepare($queryw);
 $query_handlew->execute();
 $query_handlew->finish();
-
 $queryr = "SELECT * FROM $tablename ORDER BY id desc";
 $query_handler = $connect->prepare($query);
 $query_handler->execute();
-$query_handler->bind_columns(undef, \$id, \$date, \$post);
+$query_handler->bind_columns(undef, \$id, \$date, \$name, \$email, \$post);
 while($query_handler->fetch()) {
-   print "$date, $post <br />";
+print "$date .::. $name <br> $post <br>";
 }
-$query_handler->finish();
+$query_handler->finish(); $connect->disconnect();
 } else {
 while($query_handle->fetch()) {
-   print "$date, $post <br />";
+print "$date .::. $name <br> $post <br>";
 }
-
+}
 $query_handle->finish(); $connect->disconnect();
-}
+
+$years = localtime->year();
+$year = 1900 + $years;
+$day = localtime->mday();
+$months = localtime->mon();
+$month = 1 + $months;
+@f_date = ($year, $month, $day);
+$n_date = join("-", @f_date);
 
 print <<"B";
 
-<p>Add entry:
+<p>Todays Date (YYMMDD): $n_date <br>
+Add entry:
 <form action=mysql-10-21.pl method=get>
 <table border=0 cellpadding=0 cellspacing=0>
-<tr><td>Id:</td><td><input type=text size=30 name=f_id></td></tr>
-<tr><td>Date:</td><td> <input type=text size=30 name=f_date></td></tr>
-<tr><td>Post:</td><td> <textarea type=text rows=3 cols=30 name=f_post></textarea></td></tr>
-<tr><td></td><td><input type=submit border=0 value=\"Add\"></td></tr>
+<tr><td>Name:</td><td> <input type=text size=30 name=f_name></td></tr>
+<tr><td>Email:</td><td> <input type=text size=30 name=f_email></td></tr>
+<tr><td>Comment:</td><td> <textarea type=text rows=3 cols=30 name=f_post></textarea></td></tr>
+<tr><td></td><td><input type=submit border=0 value=\"Comment\"></td></tr>
 </table>
 </p>
 </form>
