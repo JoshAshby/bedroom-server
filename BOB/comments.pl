@@ -33,7 +33,7 @@ if($f_name && $f_email) {#if you enter both a name and email
 	$query_handler->finish(); $connect->disconnect();#finish the query and close the connection to the database
 } else {#if there is no data in the form
 	while($query_handle->fetch()) {#get the data in the database and print it out
-		print "On $date, $name Said:<br> $post <br><br>";#prints out like above
+		print "On $date, $name Said:<br> $post <br>";#prints out like above
 	}
 }
 

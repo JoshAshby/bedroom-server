@@ -9,7 +9,7 @@ print "Welcome, $n_name!<br><br>";
 
 print <<"ABC";
 
-<a id="v_toggle" href="#"Post something new</a>
+<a id="v_toggle" href="#">Post something new</a>
 <div id="vertical_slide">
 <form action=index.pl method=get>
 <table border=0 cellpadding=0 cellspacing=0>
@@ -65,8 +65,7 @@ if($cmf_name && $cmf_post && $cmf_title && $n_name eq 'Josh Ashby') {#if you ent
 	@cmf_date = ($year, $month, $day);
 	$cmn_date = join("-", @cmf_date);
 
-	$querycmw = "INSERT INTO $contentname VALUES ('$cmf_id', '$cmn_date', '$cmf_name', '<h4>$cmf_title</h4>$cmf_post<br>
-<br>')";#connect to the
+	$querycmw = "INSERT INTO $contentname VALUES ('$cmf_id', '$cmn_date', '$cmf_name', '<h4 class=\"toggler\">$cmf_title</h4><div class=\"element\">$cmf_post</div><br>')";#connect to the
 	$query_handlecmw = $connect->prepare($querycmw);#db and add the new data from the form (below)
 	$query_handlecmw->execute();
 	$query_handlecmw->finish();
@@ -78,7 +77,9 @@ $querycms = "SELECT * FROM $contentname ORDER BY id desc";#re-read the data incl
 $query_handlecms = $connect->prepare($querycms);
 $query_handlecms->execute();
 $query_handlecms->bind_columns(undef, \$cmsid, \$cmsdate, \$cmsname, \$cmspost);
+print "<div id=\"accordion\">";
 while($query_handlecms->fetch()) {
-	print "$cmsdate .::. $cmsname<br> $cmspost<br><br>";
+	print "$cmsdate .::. $cmsname<br> $cmspost";
 }
+print "</div>";
 $query_handlecms->finish();

@@ -6,7 +6,8 @@ print <<"ABC";
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title>Project: Bouncing Off Bumper - BOB | Home</title>
 <script type="text/javascript" src="Resources/mootools.js"></script>
-<script type="text/javascript" src="Resources/login.js"></script>
+<script type="text/javascript" src="Resources/slide.js"></script>
+<script type="text/javascript" src="Resources/content.js"></script>
 </head>
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="800px" align="center" height="120">

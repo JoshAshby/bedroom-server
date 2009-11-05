@@ -9,8 +9,9 @@ $n_date = join("-", @f_date);
 print <<"ABC";
 
 <br>
+<a id="comment-t" href="#">Add a Comment!</a>
+<div id="comment-s">
 Todays Date (YYMMDD): $n_date <br>
-Add entry:
 <form action=index.pl method=get>
 <table border=0 cellpadding=0 cellspacing=0>
 <tr><td>Name*:</td><td> <input type=text size=30 name=f_name></td></tr>
@@ -20,6 +21,7 @@ Add entry:
 </table>
 Fields marked with * are required to post a comment.
 </form>
+</div>
 </p1>
 </div>
 <div id="bottom">

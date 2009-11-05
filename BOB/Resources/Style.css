@@ -99,10 +99,27 @@ color: #FFFFFF;
 background: transparent url(active.png) center center repeat-x;
 }
 
-#vertical_slide {
+#vertical_slide, #horizontal_slide {
 	background: #C8C8C8;
 	color: #757575;
 	padding: 10px;
 	border: 0px;
 	font-weight: bold;
+}
+
+#accordion {
+	margin:20px 0px;
+}
+
+h4.toggler {
+	font-size: 12px;
+	background: #C8C8C8;
+	color: #757575;
+	margin: 0 0 4px 0;
+	padding: 3px 5px 1px;
+}
+
+div.element p, div.element h4 {
+	margin:0px;
+	padding:4px;
 }
