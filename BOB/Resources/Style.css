@@ -98,3 +98,11 @@ text-align : center;
 color: #FFFFFF;
 background: transparent url(active.png) center center repeat-x;
 }
+
+#vertical_slide {
+	background: #C8C8C8;
+	color: #757575;
+	padding: 10px;
+	border: 0px;
+	font-weight: bold;
+}

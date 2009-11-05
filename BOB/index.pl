@@ -14,21 +14,34 @@ use DBD::mysql;
 use Time::localtime;
 use CGI::Session;
 use CGI;
+use Crypt::PasswdMD5 qw(unix_md5_crypt);
 
 $form=new CGI;
 $cmf_name=CGI::escapeHTML($form->param("cmf_name"));
 $cmf_title=CGI::escapeHTML($form->param("cmf_title"));
 $cmf_post=CGI::escapeHTML($form->param("cmf_post"));
 $l_name=CGI::escapeHTML($form->param("l_name"));
+$l_pass=CGI::escapeHTML($form->param("l_pass"));
 $f_name=CGI::escapeHTML($form->param("f_name"));
 $f_email=CGI::escapeHTML($form->param("f_email"));
 $f_post=CGI::escapeHTML($form->param("f_post"));
 
 $session = CGI::Session->load() or die CGI::Session->errstr();
 
-if ($l_name)
+if ($l_name && $l_pass)
 {
 $session->param('username', $l_name);
+my @salt = ( '.', '/', 0 .. 9, 'A' .. 'Z', 'a' .. 'z' );
+my $crypthash = unix_md5_crypt($l_pass, gensalt(8));
+$session->param('pass', $crypthash);
+sub gensalt {
+  my $count = shift;
+  my $salt;
+  for (1..$count) {
+    $salt .= (@salt)[rand @salt];
+  }
+  return $salt;
+}
 }
 
 if ($session->is_expired)

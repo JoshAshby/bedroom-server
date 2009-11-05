@@ -1,6 +1,8 @@
 <p>
 <html>
 <head>
+<script type="text/javascript" src="mootools.js"></script>
+<script type="text/javascript" src="menu.js"></script>
 <script>
 var url_before = "Resources/Headers/header";
 var url_after = ".jpg";
@@ -28,13 +30,15 @@ BeagleBarn Private Webserver - By: <a href="http://joshashby.com">joshashby.com<
 </table>
 <script>printRndImg();</script><br>
 <table cellpadding="0" cellspacing="0" border="0" width="800" align="center"><TR><TD>
-<ul class="solidblockmenu">
-<li><a href="/" class="current"><span>Home</span></a></li>
-<li><a href="/perl"><span>Perl</span></a></li>
-<li><a href="/php"><span>PHP</span></a></li>
-<li><a href="/eyeos/browser"><span>eyeOS</span></a></li>
-<li><a href="/xampp"><span>XAMPP</span></a></li>
-<li><a href="/cgiirc/irc.cgi"><span>IRC</span></a></li>
-</ul>
+<div id="menu">
+<a href="/" class="current">Home</a>
+<a href="/perl">Perl</a>
+<a href="/php">PHP</a>
+<a href="/eyeos/browser">eyeOS</a>
+<a href="/xampp">XAMPP</a>
+<a href="/cgiirc/irc.cgi">IRC</a>
 </div>
-</TD></TR></table>
+</TD>
+</TR>
+</table>
+<br>

@@ -1,11 +1,16 @@
 $n_name = $session->param("username");
+$n_pass = $session->param("pass");
+
+if ($n_pass eq unix_md5_crypt('joshua', $n_pass)) {
+
 if ($n_name eq 'Josh Ashby')
 {
 print "Welcome, $n_name!<br><br>";
 
 print <<"ABC";
 
-Add entry:
+<a id="v_toggle" href="#"Post something new</a>
+<div id="vertical_slide">
 <form action=index.pl method=get>
 <table border=0 cellpadding=0 cellspacing=0>
 <tr><td>Name*:</td><td> <input type=text size=30 name=cmf_name></td></tr>
@@ -14,20 +19,27 @@ Add entry:
 <tr><td></td><td><input type=submit border=0 value=\"Add\"></td></tr>
 </table>
 </form>
+</div>
+<br>
 
 ABC
 
-} else {
+} 
+}else{
 
 print <<"ABC";
 
-Please Login:
+<a id="v_toggle" href="#">Login</a>
+<div id="vertical_slide">
 <form action=index.pl method=get>
 <table border=0 cellpadding=0 cellspacing=0>
 <tr><td>Username:</td><td> <input type=text size=20 name=l_name></td></tr>
+<tr><td>Password:</td><td> <input type=text size=20 name=l_pass></td></tr>
 <tr><td></td><td><input type=submit border=0 value=\"Login\"></td></tr>
 </table>
 </form>
+</div>
+<br>
 
 ABC
 

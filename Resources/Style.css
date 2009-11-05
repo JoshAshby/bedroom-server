@@ -96,74 +96,15 @@ img {
 border: none;
 }
 
-.solidblockmenu{
-margin: 0;
-padding: 0;
-float: left;
-font: bold 18px Arial;
-width: 100%;
-overflow: hidden;
-margin-bottom: 1em;
-border: 0px solid #625e00;
-border-width: 0px 0;
-background: black url(testcopy.png) center center repeat-x;
-text-align : center;
-         -webkit-border-top-left-radius:0px;
-         -webkit-border-top-right-radius:0px;
-         -webkit-border-bottom-left-radius:10px;
-         -webkit-border-bottom-right-radius:10px;
+#menu {
+	width: 800;
+	height: 40;
+	font-size: 30px;
+	font-family: Sans;
+	text-align: center;
+	background: black url(testcopy.png) center center repeat-x;
+	float: left;
 
-         -khtml-border-radius-topleft:0px;
-         -khtml-border-radius-topright:0px;
-         -khtml-border-radius-bottomleft:10px;
-         -khtml-border-radius-bottomright:10px;
-
-         -moz-border-radius-topleft:0px;
-         -moz-border-radius-topright:0px;
-         -moz-border-radius-bottomleft:10px;
-         -moz-border-radius-bottomright:10px;
-}
-
-.solidblockmenu li{
-display: inline;
-}
-
-.solidblockmenu li a{
-float: left;
-color: white;
-padding: 10px 10px;
-text-decoration: none;
-text-align : center;
-}
-
-.solidblockmenu li a:visited{
-color: #fff;
-text-align : center;
-}
-
-.solidblockmenu li a:hover{
-color: #FFFFFF;
-background: transparent url(table.png) center center repeat-x;
-text-align : center;
-         -webkit-border-top-left-radius:0px;
-         -webkit-border-top-right-radius:0px;
-         -webkit-border-bottom-left-radius:10px;
-         -webkit-border-bottom-right-radius:10px;
-
-         -khtml-border-radius-topleft:0px;
-         -khtml-border-radius-topright:0px;
-         -khtml-border-radius-bottomleft:10px;
-         -khtml-border-radius-bottomright:10px;
-
-         -moz-border-radius-topleft:0px;
-         -moz-border-radius-topright:0px;
-         -moz-border-radius-bottomleft:10px;
-         -moz-border-radius-bottomright:10px;
-}
-
-.solidblockmenu li .current{
-color: #FFFFFF;
-background: transparent url(active.png) center center repeat-x;
          -webkit-border-top-left-radius:0px;
          -webkit-border-top-right-radius:0px;
          -webkit-border-bottom-left-radius:10px;
