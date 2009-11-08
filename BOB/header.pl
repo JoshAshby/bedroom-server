@@ -13,7 +13,7 @@ print <<"ABC";
 <table border="0" cellpadding="0" cellspacing="0" width="800px" align="center" height="120">
 <tr>
 <td>
-<img src="./Resources/Header/header1.jpg">
+<img src="Resources/Header/header1.jpg">
 </td>
 </tr>
 <tr>
@@ -21,7 +21,7 @@ print <<"ABC";
 <div id="top">
 <ul class="solidblockmenu">
 <li><a href="/"><span>BeagleBarn Home</span></a></li>
-<li><a href="/BOB" class="current"><span>BOB</span></a></li>
+<li><a href="./" class="current"><span>BOB</span></a></li>
 </ul>
 </div>
 <div id="content">

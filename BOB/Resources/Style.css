@@ -8,8 +8,8 @@ h4 {
    }
 
 p {
-    color : #fff;
-    text-align : center;
+    color : #000;
+    text-align : left;
   }
 
 p1 {
@@ -99,7 +99,7 @@ color: #FFFFFF;
 background: transparent url(active.png) center center repeat-x;
 }
 
-#vertical_slide, #horizontal_slide {
+#vertical_slide, #comment-s {
 	background: #C8C8C8;
 	color: #757575;
 	padding: 10px;
